@@ -10,9 +10,12 @@
 def get_multiplied_digits(number): #1
     str_number = str(number) #2
     first = int(str_number[0])  # 3
-    if len(str_number) > 1: #4
+    if int(str_number[-1]) == 0 and len(str_number) > 1:
+        return first * get_multiplied_digits(int(str_number[1:-2]))
+    elif len(str_number) > 1:
         return first * get_multiplied_digits(int(str_number[1:]))
     else:
         return first
-result = get_multiplied_digits(40203)
+
+result = get_multiplied_digits(40206)
 print(result)
